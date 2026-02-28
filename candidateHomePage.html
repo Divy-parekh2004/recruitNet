@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RecruitNet • exact Joblet inspired • perfect color</title>
+    <!-- Bootstrap 5 + icons + Google Fonts (Poppins + Inter) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400… rel="
+        stylesheet"> <!-- AOS for scroll animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FFFFFF;
+            color: #1B2B3E;
+            overflow-x: hidden;
+        }
+
+        /* ===== EXACT COLOR PALETTE from Joblet (extracted) ===== */
+        :root {
+            --primary-blue: #0A3B5B;
+            /* deep navy blue - brand primary */
+            --primary-dark: #05273D;
+            /* darker for hover */
+            --accent-orange: #FF7A3D;
+            /* vibrant orange - buttons, highlights */
+            --accent-light: #FFE6DC;
+            /* soft peach - backgrounds */
+            --gray-light: #F5F7FA;
+            /* light grey - sections */
+            --gray-mid: #6C7A8A;
+            /* text muted */
+            --pure-white: #FFFFFF;
+            --dark-text: #1E2C3A;
+            --shadow-job: 0 20px 35px -5px rgba(10, 59, 91, 0.12);
+            --shadow-hover: 0 30px 50px -15px #0A3B5B;
+        }
+
+        /* ----- TYPOGRAPHY (Joblet uses Poppins for headings) ----- */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .navbar-brand,
+        .display-4,
+        .display-5,
+        .btn,
+        .nav-link {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .section-subtitle {
+            color: var(--accent-orange);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            line-height: 1.2;
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* ----- NAVBAR (clean white, Joblet style) ----- */
+        .navbar {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            padding: 20px 0;
+        }
+
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-blue) !important;
+        }
+
+        .navbar-brand span {
+            color: var(--accent-orange);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark-text) !important;
+            margin: 0 0.75rem;
+            position: relative;
+            font-size: 1rem;
+            padding: 0.5rem 0 !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-orange);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .btn-sign {
+            border: 2px solid var(--accent-orange);
+            border-radius: 40px;
+            padding: 10px 32px;
+            font-weight: 600;
+            color: var(--accent-orange);
+            background: transparent;
+            transition: 0.3s;
+        }
+
+        .btn-sign:hover {
+            background: var(--accent-orange);
+            color: white;
+            border-color: var(--accent-orange);
+        }
+
+        /* ----- HERO (exact match to Joblet layout) ----- */
+        .hero {
+            background: linear-gradient(145deg, #FFFFFF 0%, #F9FBFF 100%);
+            padding: 140px 0 80px;
+            margin-top: 86px;
+            border-bottom: 1px solid rgba(10, 59, 91, 0.08);
+        }
+
+        .hero h6 {
+            color: var(--accent-orange);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-size: 4.2rem;
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 span {
+            color: var(--accent-orange);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gray-mid);
+            margin-bottom: 2rem;
+        }
+
+        .hero-search {
+            background: white;
+            border-radius: 70px;
+            padding: 5px 5px 5px 25px;
+            display: flex;
+            align-items: center;
+            max-width: 600px;
+            box-shadow: var(--shadow-job);
+            border: 1px solid rgba(10, 59, 91, 0.1);
+        }
+
+        .hero-search input {
+            border: none;
+            flex: 1;
+            padding: 16px 0;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .hero-search button {
+            background: var(--accent-orange);
+            border: none;
+            border-radius: 60px;
+            padding: 14px 42px;
+            color: white;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .hero-search button:hover {
+            background: var(--primary-blue);
+        }
+
+        .popular-searches {
+            margin-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .popular-searches span {
+            color: var(--gray-mid);
+        }
+
+        .popular-searches a {
+            background: var(--gray-light);
+            padding: 8px 22px;
+            border-radius: 40px;
+            text-decoration: none;
+            color: var(--primary-blue);
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .popular-searches a:hover {
+            background: var(--accent-orange);
+            color: white;
+        }
+
+        /* ----- SERVICE CARDS (Joblet style) ----- */
+        .service-card {
+            background: white;
+            padding: 2.8rem 2rem;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: var(--shadow-job);
+            transition: 0.3s;
+            height: 100%;
+            border: 1px solid rgba(10, 59, 91, 0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            color: var(--accent-orange);
+            margin-bottom: 1.8rem;
+        }
+
+        .service-card h4 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--gray-mid);
+            font-size: 1rem;
+        }
+
+        /* ----- HOW IT WORKS (steps) ----- */
+        .step-card {
+            background: white;
+            border-radius: 30px;
+            padding: 2.5rem 1.8rem;
+            box-shadow: var(--shadow-job);
+            height: 100%;
+            border: 1px solid rgba(255, 122, 61, 0.1);
+            transition: 0.3s;
+        }
+
+        .step-card:hover {
+            border-color: var(--accent-orange);
+        }
+
+        .step-number {
+            font-size: 3.8rem;
+            font-weight: 800;
+            color: rgba(255, 122, 61, 0.2);
+            line-height: 1;
+            margin-bottom: 1.2rem;
+        }
+
+        .step-card h5 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 0.8rem;
+        }
+
+        .step-card p {
+            color: var(--gray-mid);
+        }
+
+        /* ----- PRICE TABS (exact Joblet style) ----- */
+        .price-tab {
+            background: white;
+            border-radius: 30px;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: var(--shadow-job);
+            border: 1px solid rgba(10, 59, 91, 0.05);
+            transition: 0.2s;
+        }
+
+        .price-tab:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-orange);
+        }
+
+        .price-amount {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+        }
+
+        .price-period {
+            color: var(--gray-mid);
+            font-weight: 500;
+        }
+
+        /* category  */
+
+        /* ===== CATEGORY SECTION ===== */
+        .explore-category {
+            margin-top: -20px;
+        }
+
+        /* Section badge */
+        .section-tag {
+            background: #FFDCC2;
+            color: #0C1A2F;
+            padding: 8px 32px;
+            border-radius: 60px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .category-title {
+            color: #0C1A2F;
+        }
+
+        /* ===== CATEGORY CARD ===== */
+        .category-card {
+            background: #ffffff;
+            padding: 2.6rem 1rem;
+            border-radius: 44px;
+            text-align: center;
+            box-shadow: 0 30px 50px -25px rgba(12, 26, 47, 0.25);
+            transition: 0.4s cubic-bezier(0.2, 0.7, 0.3, 1);
+            border: 1px solid rgba(255, 123, 107, 0.15);
+            height: 100%;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .category-card i {
+            font-size: 4.2rem;
+            background: linear-gradient(145deg, #FF7B6B, #FFB6A0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.2rem;
+            transition: 0.2s;
+        }
+
+        .category-card h5 {
+            font-weight: 700;
+            font-size: 2rem;
+            color: #0C1A2F;
+            margin-bottom: 0.3rem;
+        }
+
+        .category-card p {
+            font-size: 1.2rem;
+            color: #2A3F54;
+            font-weight: 400;
+        }
+
+        /* Hover effects */
+        .category-card:hover {
+            transform: translateY(-16px) scale(1.02);
+            background: #1E3A5F;
+            box-shadow: 0 40px 60px -20px #0C1A2F;
+        }
+
+        .category-card:hover h5,
+        .category-card:hover p {
+            color: #ffffff;
+        }
+
+        .category-card:hover i {
+            background: linear-gradient(145deg, #FFDCC2, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ----- TESTIMONIAL (Joblet style) ----- */
+        .testimonial-card {
+            background: white;
+            border-radius: 50px;
+            padding: 3.5rem;
+            box-shadow: var(--shadow-job);
+            border: 1px solid rgba(255, 122, 61, 0.2);
+        }
+
+        .testimonial-card i {
+            color: var(--accent-orange);
+            font-size: 3rem;
+            opacity: 0.4;
+        }
+
+        /* ----- STATS SECTION (Joblet colors) ----- */
+        .stats-job {
+            background: var(--primary-blue);
+            color: white;
+            padding: 80px 0;
+            border-radius: 0 80px 0 0;
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1;
+            color: var(--accent-orange);
+        }
+
+        .stat-label {
+            font-size: 1.3rem;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        /* ----- CTA BANNER ----- */
+        .cta-job {
+            background: var(--accent-light);
+            border-radius: 60px;
+            padding: 4rem;
+            color: var(--primary-blue);
+        }
+
+        /* ----- FOOTER (matching Joblet dark) ----- */
+        .footer {
+            background: #05273D;
+            color: #C3D4E3;
+            padding: 80px 0 30px;
+            border-top: 5px solid var(--accent-orange);
+        }
+
+        .footer-logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        .footer-logo span {
+            color: var(--accent-orange);
+        }
+
+        .footer a {
+            color: #a5bed9;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .footer a:hover {
+            color: var(--accent-orange);
+            padding-left: 6px;
+        }
+
+        .newsletter-wrap {
+            display: flex;
+            border-bottom: 2px solid var(--accent-orange);
+            padding: 8px 0;
+        }
+
+        .newsletter-wrap input {
+            background: transparent;
+            border: none;
+            color: white;
+            flex: 1;
+            outline: none;
+        }
+
+        .newsletter-wrap button {
+            background: none;
+            border: none;
+            color: var(--accent-orange);
+            font-size: 2rem;
+        }
+
+        hr {
+            border-color: rgba(255, 122, 61, 0.2);
+        }
+
+        .counter {
+            display: inline-block;
+        }
+
+        [data-aos] {
+            transition-timing-function: cubic-bezier(0.25, 0.45, 0.45, 0.95);
+        }
+    </style>
+</head>
+
+<body> <!-- ========== NAVBAR (Joblet style) ========== -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container"> <a class="navbar-brand" href="#">Recruit<span>Net</span></a> <button
+                class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMain"> <span
+                    class="navbar-toggler-icon"></span> </button>
+            <div class="collapse navbar-collapse" id="navMain">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Jobs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Companies</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Resources</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                </ul> <a href="#" class="btn btn-sign"><i class="far fa-user me-2"></i>Sign in</a>
+            </div>
+        </div>
+    </nav> <!-- ========== HERO (exact Joblet match) ========== -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7" data-aos="fade-right">
+                    <h6><i class="fas fa-bolt me-2" style="color: var(--accent-orange);"></i> Engage & Recruit Top</h6>
+                    <h1>Specialists On <span>RecruitNet!</span></h1>
+                    <p>We provided lightning-fast and remarkable work solutions.</p>
+                    <div class="hero-search"> <input type="text" placeholder="Job title, skill or company"> <button><i
+                                class="fas fa-search me-2"></i>Search</button> </div>
+                    <div class="popular-searches"> <span>Popular Searches:</span> <a href="#">Developer</a> <a
+                            href="#">Designer</a> <a href="#">Marketing</a> <a href="#">Remote</a> <a href="#">AI</a>
+                    </div>
+                </div>
+                <div class="col-lg-5" data-aos="fade-left"> <img
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='400' viewBox='0 0 500 400'%3E%3Crect width='500' height='400' fill='%23FF7A3D' opacity='0.1'/%3E%3Ccircle cx='350' cy='150' r='90' fill='%230A3B5B' opacity='0.15'/%3E%3Ccircle cx='120' cy='250' r='110' fill='%23FF7A3D' opacity='0.1'/%3E%3Ctext x='150' y='200' fill='%230A3B5B' font-size='48' font-weight='700' font-family='Poppins'%3ERecruit%3C/text%3E%3Ctext x='230' y='280' fill='%23FF7A3D' font-size='52' font-weight='800' font-family='Poppins'%3ENet%3C/text%3E%3C/svg%3E"
+                        class="img-fluid" alt="hero"> </div>
+            </div>
+        </div>
+    </section> <!-- ========== SERVICES (Joblet style) ========== -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up"> <span class="section-subtitle">Get Appropriate With Solid
+                    Development Expertise.</span>
+                <h2 class="section-title">RecruitNet Is Your One-Stop Job Consultancy</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="50">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-file-signature"></i></div>
+                        <h4>Free Job Posting</h4>
+                        <p>Unlock opportunities with free posting & connect with top talent effortlessly.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+                        <h4>Technical Services</h4>
+                        <p>From IT support to software development, tailored solutions for your systems.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="150">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-headset"></i></div>
+                        <h4>24*7 Customer Support</h4>
+                        <p>Round-the-clock customer support, always ready to assist you promptly.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-users"></i></div>
+                        <h4>Human Resources</h4>
+                        <p>Tailored HR strategies from recruitment to training, fostering growth.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> <!-- ========== HOW IT WORKS ========== -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up"> <span class="section-subtitle">How it Works Development
+                    Expertise.</span>
+                <h2 class="section-title">Simple steps to success</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="50">
+                    <div class="step-card">
+                        <div class="step-number">01</div>
+                        <h5>Complete profile</h5>
+                        <p>Enhance your profile with skills</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="step-card">
+                        <div class="step-number">02</div>
+                        <h5>Create account</h5>
+                        <p>Set up your account with ease</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="150">
+                    <div class="step-card">
+                        <div class="step-number">03</div>
+                        <h5>Apply for jobs</h5>
+                        <p>Seek opportunities in various fields</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="step-card">
+                        <div class="step-number">04</div>
+                        <h5>Free job position</h5>
+                        <p>Find perfect job for free</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> <!-- ========== PRICE TABS (Joblet style) ========== -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-md-3 col-6" data-aos="fade-up">
+                    <div class="price-tab">
+                        <div class="price-amount">$1000 - $1200</div>
+                        <div class="price-period">month</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="80">
+                    <div class="price-tab">
+                        <div class="price-amount">$100 - $200</div>
+                        <div class="price-period">week</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="160">
+                    <div class="price-tab">
+                        <div class="price-amount">$10000 - $30000</div>
+                        <div class="price-period">year</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="240">
+                    <div class="price-tab">
+                        <div class="price-amount">$10 - $80</div>
+                        <div class="price-period">hour</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- cateogry cards -->
+    <!-- ========== CATEGORY CARDS ========== -->
+    <section class="py-5 explore-category">
+        <div class="container">
+            <div class="text-center" data-aos="fade-right">
+                <span class="section-tag">
+                    <i class="far fa-compass me-2"></i> popular fields
+                </span>
+                <h2 class="display-4 fw-bold mb-5 category-title">
+                    Explore by category
+                </h2>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="50">
+                    <div class="category-card">
+                        <i class="fas fa-code"></i>
+                        <h5>Dev</h5>
+                        <p>3.4k jobs</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="category-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h5>Marketing</h5>
+                        <p>2.3k jobs</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="150">
+                    <div class="category-card">
+                        <i class="fas fa-paint-brush"></i>
+                        <h5>Design</h5>
+                        <p>1.9k jobs</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="category-card">
+                        <i class="fas fa-robot"></i>
+                        <h5>AI / ML</h5>
+                        <p>2.8k jobs</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4 mt-2">
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="50">
+                    <div class="category-card">
+                        <i class="fas fa-headset"></i>
+                        <h5>Support</h5>
+                        <p>1.2k jobs</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="category-card">
+                        <i class="fas fa-coins"></i>
+                        <h5>Finance</h5>
+                        <p>1.5k jobs</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="150">
+                    <div class="category-card">
+                        <i class="fas fa-flask"></i>
+                        <h5>Science</h5>
+                        <p>940 jobs</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="category-card">
+                        <i class="fas fa-scale-balanced"></i>
+                        <h5>Legal</h5>
+                        <p>720 jobs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ========== TESTIMONIAL ========== -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="testimonial-card text-center" data-aos="flip-up"> <i class="fas fa-quote-right mb-4"></i>
+                <p class="fs-3 fw-light fst-italic">"Their Team Is Nothing Short Of Extraordinary. From The Moment We
+                    Engaged, Their Commitment To Understanding Our Unique Business Needs Was Evident."</p>
+                <div class="d-flex align-items-center justify-content-center gap-3 mt-4"> <img
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='30' fill='%23FF7A3D'/%3E%3Ctext x='30' y='42' font-size='28' text-anchor='middle' fill='%23FFFFFF' font-family='Poppins'%3EA%3C/text%3E%3C/svg%3E"
+                        class="rounded-circle" width="60">
+                    <div class="text-start"> <strong class="fs-5">Alex Sam Martin</strong>
+                        <p class="text-muted">Product Lead</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> <!-- ========== STATS with counters ========== -->
+    <div class="stats-job">
+        <div class="container">
+            <div class="row gy-5">
+                <div class="col-md-3 col-6 text-center" data-aos="zoom-in">
+                    <div class="stat-number"><span class="counter" data-target="86">0</span>k+</div>
+                    <div class="stat-label">clients</div>
+                </div>
+                <div class="col-md-3 col-6 text-center" data-aos="zoom-in" data-aos-delay="80">
+                    <div class="stat-number"><span class="counter" data-target="32">0</span>k</div>
+                    <div class="stat-label">jobs posted</div>
+                </div>
+                <div class="col-md-3 col-6 text-center" data-aos="zoom-in" data-aos-delay="160">
+                    <div class="stat-number"><span class="counter" data-target="240">0</span>+</div>
+                    <div class="stat-label">industries</div>
+                </div>
+                <div class="col-md-3 col-6 text-center" data-aos="zoom-in" data-aos-delay="240">
+                    <div class="stat-number"><span class="counter" data-target="4.9">0</span>★</div>
+                    <div class="stat-label">app rating</div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- ========== CTA BANNER ========== -->
+    <section class="py-5">
+        <div class="container">
+            <div class="cta-job d-flex flex-column flex-lg-row align-items-center justify-content-between"
+                data-aos="zoom-in">
+                <div>
+                    <h2 class="display-5 fw-bold">Start To Find The Job That Fits your life</h2>
+                    <p class="fs-4 opacity-75">Get hired in top companies</p>
+                </div> <button class="btn btn-lg"
+                    style="background: var(--primary-blue); color: white; border-radius: 60px; padding: 16px 48px; font-weight: 600;">Get
+                    started →</button>
+            </div>
+        </div>
+    </section> <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row gy-5">
+                <div class="col-lg-4 col-md-6" data-aos="fade-right">
+                    <div class="footer-logo">Recruit<span>Net</span></div>
+                    <p class="my-4 opacity-50" style="max-width:330px;">Trusted by 86k+ clients — where talent meets
+                        opportunity.</p>
+                    <p><i class="fas fa-phone-alt me-3" style="color: var(--accent-orange);"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-envelope me-3" style="color: var(--accent-orange);"></i> hello@recruitnet.com
+                    </p>
+                </div>
+                <div class="col-lg-2 col-md-6" data-aos="fade-up">
+                    <h5 class="text-white fs-4">Services</h5>
+                    <ul class="list-unstyled fs-5">
+                        <li><a href="#">HR solutions</a></li>
+                        <li><a href="#">Tech support</a></li>
+                        <li><a href="#">Consulting</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="60">
+                    <h5 class="text-white fs-4">Company</h5>
+                    <ul class="list-unstyled fs-5">
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Latest jobs</a></li>
+                        <li><a href="#">Privacy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="120">
+                    <h5 class="text-white fs-4">Quick</h5>
+                    <ul class="list-unstyled fs-5">
+                        <li><a href="#">Job details</a></li>
+                        <li><a href="#">Career</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6" data-aos="fade-left">
+                    <h5 class="text-white fs-4">Stay updated</h5>
+                    <div class="newsletter-wrap"><input placeholder="Email address"><button>→</button></div>
+                    <div class="mt-4 d-flex gap-4 fs-2"><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i
+                                class="fab fa-x-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div>
+                </div>
+            </div>
+            <hr class="mt-5">
+            <div class="text-center pt-3 opacity-50 small">© 2026 RecruitNet — Joblet inspired • perfect palette</div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script> AOS.init({ duration: 800, once: false, mirror: true }); function startCounters() { const counters = document.querySelectorAll('.counter'); counters.forEach(counter => { const target = parseFloat(counter.getAttribute('data-target')); const update = () => { const current = parseFloat(counter.innerText.replace('k', '').replace('+', '').replace('★', '')); const inc = target / 70; if (current < target) { let newVal = Math.ceil((current + inc) * 10) / 10; if (newVal > target) newVal = target; counter.innerText = newVal; setTimeout(update, 20); } else { counter.innerText = target; } }; update(); }); } const stats = document.querySelector('.stats-job'); const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { startCounters(); observer.disconnect(); } }); }, { threshold: 0.3 }); if (stats) observer.observe(stats); </script>
+</body>
+
+</html>
