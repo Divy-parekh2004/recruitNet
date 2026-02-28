@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RecruitNet | Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #05273D, #0A3B5B);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .auth-card {
+            background: #fff;
+            border-radius: 22px;
+            width: 100%;
+            max-width: 420px;
+            padding: 32px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .auth-card h3 {
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #0A3B5B;
+        }
+
+        .role-switch {
+            background: #F4F6FA;
+            border-radius: 50px;
+            padding: 6px;
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .role-switch button {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 10px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .role-switch .active {
+            background: #FF7A3D;
+            color: white;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            padding: 12px;
+        }
+
+        .btn-main {
+            background: #FF7A3D;
+            color: white;
+            border-radius: 30px;
+            padding: 12px;
+            border: none;
+            font-weight: 600;
+        }
+
+        .btn-main:hover {
+            background: #0A3B5B;
+        }
+
+        .auth-footer {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .auth-footer a {
+            color: #FF7A3D;
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+<div class="auth-card">
+    <h3>Login</h3>
+
+    <!-- Role Switch -->
+    <div class="role-switch">
+        <button id="candidateBtn" class="active" onclick="setRole('candidate')">Candidate</button>
+        <button id="companyBtn" onclick="setRole('company')">Company</button>
+    </div>
+
+    <!-- Login Form -->
+    <form action="login.php" method="POST">
+        <input type="hidden" name="type" id="userType" value="candidate">
+
+        <input type="email" name="email" class="form-control mb-3" placeholder="Email Address" required>
+
+        <input type="password" name="password" class="form-control mb-4" placeholder="Password" required>
+
+        <button type="submit" class="btn-main w-100">Login</button>
+    </form>
+
+    <div class="auth-footer">
+        Don’t have an account? <a href="register.html">Register</a>
+    </div>
+</div>
+
+<script>
+    function setRole(role) {
+        document.getElementById('userType').value = role;
+
+        document.getElementById('candidateBtn').classList.remove('active');
+        document.getElementById('companyBtn').classList.remove('active');
+
+        if (role === 'candidate') {
+            document.getElementById('candidateBtn').classList.add('active');
+        } else {
+            document.getElementById('companyBtn').classList.add('active');
+        }
+    }
+</script>
+
+</body>
+</html>
