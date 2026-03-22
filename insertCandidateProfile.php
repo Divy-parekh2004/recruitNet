@@ -48,5 +48,5 @@ $stmt->execute([
 
 session_destroy();
 
-echo "<script>alert('Profile created successfully'); window.location='candidateHomePage.html';</script>";
+echo "<script>alert('Profile created successfully'); window.location='candidateHomePage.php';</script>";
 ?>

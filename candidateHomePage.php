@@ -14,98 +14,7 @@
     <!-- AOS for scroll animations -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Your existing CSS (no changes) -->
-    <link rel="stylesheet" href="candidateHomePage.css">
-    <!-- Additional styles for job cards (uses your color variables) -->
-    <style>
-        /* ----- JOB CARDS (exactly as in image) ----- */
-        .job-card {
-            background: var(--pure-white);
-            border-radius: 30px;
-            padding: 2rem;
-            box-shadow: var(--shadow-job);
-            border: 1px solid rgba(10, 59, 91, 0.05);
-            transition: 0.3s;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        .job-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--accent-orange);
-        }
-        .job-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-            margin-bottom: 0.5rem;
-        }
-        .job-meta {
-            color: var(--gray-mid);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-        .job-meta i {
-            color: var(--accent-orange);
-            width: 18px;
-            margin-right: 4px;
-        }
-        .job-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 1rem 0;
-        }
-        .job-tag {
-            background: var(--accent-light);
-            color: var(--primary-blue);
-            padding: 6px 16px;
-            border-radius: 60px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-        .job-salary {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-            margin: 1rem 0;
-        }
-        .btn-read-more {
-            background: transparent;
-            border: 2px solid var(--accent-orange);
-            border-radius: 60px;
-            padding: 10px 24px;
-            color: var(--accent-orange);
-            font-weight: 600;
-            text-decoration: none;
-            align-self: flex-start;
-            transition: 0.3s;
-            margin-top: auto;
-        }
-        .btn-read-more:hover {
-            background: var(--accent-orange);
-            color: white;
-        }
-        /* Section tag reuse (already in your CSS, but we ensure it's here) */
-        .section-tag {
-            background: #FFDCC2;
-            color: #0C1A2F;
-            padding: 8px 32px;
-            border-radius: 60px;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 1.5rem;
-        }
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-            margin-bottom: 2rem;
-        }
-    </style>
+    <link rel="stylesheet" href="css/candidateHomePage.css">
 </head>
 
 <body>
@@ -122,9 +31,9 @@
                     <li class="nav-item"><a class="nav-link" href="#">Jobs</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Companies</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Resources</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contactUs.php">Contact</a></li>
                 </ul>
-                <a href="#" class="btn btn-sign"><i class="far fa-user me-2"></i>Sign in</a>
+                <a href="#" class="btn btn-sign"><i class="far fa-user me-2"></i>Logout</a>
             </div>
         </div>
     </nav>
@@ -387,94 +296,14 @@
     </section>
 
     <!-- ========== FOOTER ========== -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row gy-5">
-                <div class="col-lg-4 col-md-6" data-aos="fade-right">
-                    <div class="footer-logo">Recruit<span>Net</span></div>
-                    <p class="my-4 opacity-50" style="max-width:330px;">Trusted by 86k+ clients — where talent meets
-                        opportunity.</p>
-                    <p><i class="fas fa-phone-alt me-3" style="color: var(--accent-orange);"></i> +91 98765 43210</p>
-                    <p><i class="fas fa-envelope me-3" style="color: var(--accent-orange);"></i> hello@recruitnet.com
-                    </p>
-                </div>
-                <div class="col-lg-2 col-md-6" data-aos="fade-up">
-                    <h5 class="text-white fs-4">Services</h5>
-                    <ul class="list-unstyled fs-5">
-                        <li><a href="#">HR solutions</a></li>
-                        <li><a href="#">Tech support</a></li>
-                        <li><a href="#">Consulting</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="60">
-                    <h5 class="text-white fs-4">Company</h5>
-                    <ul class="list-unstyled fs-5">
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Latest jobs</a></li>
-                        <li><a href="#">Privacy</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="120">
-                    <h5 class="text-white fs-4">Quick</h5>
-                    <ul class="list-unstyled fs-5">
-                        <li><a href="#">Job details</a></li>
-                        <li><a href="#">Career</a></li>
-                        <li><a href="#">FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 col-md-6" data-aos="fade-left">
-                    <h5 class="text-white fs-4">Stay updated</h5>
-                    <div class="newsletter-wrap"><input placeholder="Email address"><button>→</button></div>
-                    <div class="mt-4 d-flex gap-4 fs-2">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-x-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <hr class="mt-5">
-            <div class="text-center pt-3 opacity-50 small">© 2026 RecruitNet — Joblet inspired • perfect palette</div>
-        </div>
-    </footer>
+    <?php
+        require_once 'footer.php';
+    ?>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 800, once: false, mirror: true });
-
-        function startCounters() {
-            const counters = document.querySelectorAll('.counter');
-            counters.forEach(counter => {
-                const target = parseFloat(counter.getAttribute('data-target'));
-                const update = () => {
-                    const current = parseFloat(counter.innerText.replace('k', '').replace('+', '').replace('★', ''));
-                    const inc = target / 70;
-                    if (current < target) {
-                        let newVal = Math.ceil((current + inc) * 10) / 10;
-                        if (newVal > target) newVal = target;
-                        counter.innerText = newVal;
-                        setTimeout(update, 20);
-                    } else {
-                        counter.innerText = target;
-                    }
-                };
-                update();
-            });
-        }
-
-        const stats = document.querySelector('.stats-job');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    startCounters();
-                    observer.disconnect();
-                }
-            });
-        }, { threshold: 0.3 });
-
-        if (stats) observer.observe(stats);
-    </script>
+    <!-- <script src="candidateHomePage.js"></script> -->
 </body>
 
-</html> 
+</html>

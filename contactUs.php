@@ -24,6 +24,7 @@ if (isset($_GET['status'])) {
   }
 }
 ?>
+
 <!-- ========== CONTACT HERO ========== -->
 <section class="contact-hero">
   <div class="container">

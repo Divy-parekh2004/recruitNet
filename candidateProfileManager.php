@@ -1,6 +1,4 @@
 <?php require_once 'header.php'; ?>
-<body>
-
     <!-- NAVBAR (JobX style) -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
@@ -10,10 +8,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="candidateHomePage.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="aboutUs.php">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Resume</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contactUs.php">Contact</a></li>
                     <li class="nav-item"><a class="nav-link btn-post" href="#">POST A JOB</a></li>
                 </ul>
             </div>
@@ -150,4 +148,5 @@
         </div>
     </div>
 
-<?php require_once 'footer.php'; ?>
+    <?php require_once 'footer.php'; ?>
+</body>

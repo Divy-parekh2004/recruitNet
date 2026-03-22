@@ -1,6 +1,6 @@
 <?php
 // contact-process.php
-require_once 'DBConnection.php';
+require_once 'connection.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name    = trim($_POST['name'] ?? '');
@@ -16,17 +16,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (empty($errors)) {
         $stmt = $conn->prepare("INSERT INTO contactMessages (full_name, email, subject, message) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $name, $email, $subject, $message);
 
-        if ($stmt->execute()) {
+        if ($stmt->execute([$name, $email, $subject, $message])) {
             header("Location: contactUs.php?status=success");
             exit();
         } else {
-            error_log("Contact insert error: " . $stmt->error);
+            error_log("Contact insert error: " . implode(" ", $stmt->errorInfo()));
             header("Location: contactUs.php?status=error");
             exit();
         }
-        $stmt->close();
     } else {
         header("Location: contactUs.php?status=validation_error");
         exit();
@@ -35,5 +33,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: contactUs.php");
     exit();
 }
-$conn->close();
 ?>

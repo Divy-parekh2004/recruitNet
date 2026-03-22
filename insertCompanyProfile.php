@@ -44,5 +44,5 @@ $stmt->execute([
 
 session_destroy();
 
-echo "<script>alert('Company profile created successfully');</script>";
+echo "<script>alert('Company profile created successfully');window.location='companyHomePage.php';</script>";
 ?>

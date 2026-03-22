@@ -20,18 +20,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     if ($type === "candidate") {
-        $sql = "INSERT INTO candidates (name, email, phone, password)
-                VALUES ('$name', '$email', '$phone', '$hashedPassword')";
+        $sql = "INSERT INTO candidates (name, email, phone, password) VALUES (?, ?, ?, ?)";
+        $params = [$name, $email, $phone, $hashedPassword];
     } else {
-        $sql = "INSERT INTO companies (company_name, email, phone, password)
-                VALUES ('$name', '$email', '$phone', '$hashedPassword')";
+        $sql = "INSERT INTO companies (company_name, email, phone, password) VALUES (?, ?, ?, ?)";
+        $params = [$name, $email, $phone, $hashedPassword];
     }
 
-    if ($conn->query($sql)) {
+    $stmt = $conn->prepare($sql);
+    if ($stmt->execute($params)) {
         header("Location: login.html");
         exit;
     } else {
-        echo "Database error: " . $conn->error;
+        echo "Database error: " . $stmt->errorInfo()[2];
     }
 }
 ?>

@@ -1,0 +1,223 @@
+:root {
+    --primary-blue: #0A3B5B;
+    --accent-orange: #FF7A3D;
+    --accent-light: #FFE6D6;
+    --pure-white: #ffffff;
+    --gray-mid: #6c757d;
+
+    --shadow-job: 0 10px 25px rgba(0,0,0,0.05);
+    --shadow-hover: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+/* ----- NAVBAR ----- */
+    .navbar {
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+      padding: 20px 0;
+      transition: 0.3s;
+    }
+
+    .navbar.scrolled {
+      padding: 15px 0;
+      box-shadow: 0 10px 30px rgba(10,59,91,0.1);
+    }
+
+    .navbar-brand {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary-blue) !important;
+    }
+
+    .navbar-brand span {
+      color: var(--accent-orange);
+    }
+
+    .nav-link {
+      font-weight: 500;
+      color: var(--dark-text) !important;
+      margin: 0 0.75rem;
+      position: relative;
+      padding: 0.5rem 0 !important;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-orange);
+      transition: 0.3s;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .btn-sign {
+      border: 2px solid var(--accent-orange);
+      border-radius: 40px;
+      padding: 10px 32px;
+      font-weight: 600;
+      color: var(--accent-orange);
+      background: transparent;
+      transition: 0.3s;
+    }
+
+    .btn-sign:hover {
+      background: var(--accent-orange);
+      color: white;
+    }
+.job-card {
+    background: var(--pure-white);
+    border-radius: 30px;
+    padding: 2rem;
+    box-shadow: var(--shadow-job);
+    border: 1px solid rgba(10, 59, 91, 0.05);
+    transition: 0.3s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.job-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--accent-orange);
+}
+.job-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+}
+.job-meta {
+    color: var(--gray-mid);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+.job-meta i {
+    color: var(--accent-orange);
+    width: 18px;
+    margin-right: 4px;
+}
+.job-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 1rem 0;
+}
+.job-tag {
+    background: var(--accent-light);
+    color: var(--primary-blue);
+    padding: 6px 16px;
+    border-radius: 60px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+.job-salary {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin: 1rem 0;
+}
+.btn-read-more {
+    background: transparent;
+    border: 2px solid var(--accent-orange);
+    border-radius: 60px;
+    padding: 10px 24px;
+    color: var(--accent-orange);
+    font-weight: 600;
+    text-decoration: none;
+    align-self: flex-start;
+    transition: 0.3s;
+    margin-top: auto;
+}
+.btn-read-more:hover {
+    background: var(--accent-orange);
+    color: white;
+}
+/* Section tag reuse (already in your CSS, but we ensure it's here) */
+.section-tag {
+    background: #FFDCC2;
+    color: #0C1A2F;
+    padding: 8px 32px;
+    border-radius: 60px;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 2rem;
+}
+
+    /* ----- FOOTER ----- */
+    .footer {
+      background: #05273D;
+      color: #C3D4E3;
+      padding: 80px 0 30px;
+      border-top: 5px solid var(--accent-orange);
+    }
+
+    .footer-logo {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: white;
+    }
+
+    .footer-logo span {
+      color: var(--accent-orange);
+    }
+
+    .footer a {
+      color: #a5bed9;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .footer a:hover {
+      color: var(--accent-orange);
+      padding-left: 6px;
+    }
+
+    .newsletter-wrap {
+      display: flex;
+      border-bottom: 2px solid var(--accent-orange);
+      padding: 8px 0;
+    }
+
+    .newsletter-wrap input {
+      background: transparent;
+      border: none;
+      color: white;
+      flex: 1;
+      outline: none;
+    }
+
+    .newsletter-wrap button {
+      background: none;
+      border: none;
+      color: var(--accent-orange);
+      font-size: 2rem;
+      transition: 0.3s;
+    }
+
+    .newsletter-wrap button:hover {
+      transform: translateX(5px);
+    }
+
+    .counter {
+      display: inline-block;
+    }
+
+    [data-aos] {
+      transition-timing-function: cubic-bezier(0.25, 0.45, 0.45, 0.95);
+    }

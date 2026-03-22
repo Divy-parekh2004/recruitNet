@@ -13,11 +13,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="contactUs.css">
-   <link rel="stylesheet" href="aboutUs.css">
-  <link rel="stylesheet" href="index.css">
-  <link rel="stylesheet" href="candidateProfileManager.css">
-   <link rel="stylesheet" href="candidateHomePage.css">
+   <link rel="stylesheet" href="css/contactUs.css">
+   <link rel="stylesheet" href="css/aboutUs.css">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/candidateProfileManager.css">
+   <!-- <link rel="stylesheet" href="css/candidateHomePage.css"> -->
 </head>
 <body>
     <nav class="navbar navbar-expand-lg fixed-top">

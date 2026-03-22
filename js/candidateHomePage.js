@@ -1,4 +1,3 @@
-        
         AOS.init({ duration: 800, once: false, mirror: true });
 
         function startCounters() {

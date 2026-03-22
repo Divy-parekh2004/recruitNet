@@ -5,22 +5,22 @@ include "connection.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $type = $_POST['type'];
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $email = $_POST['email'];
     $password = $_POST['password'];
 
     if ($type === "candidate") {
-        $sql = "SELECT * FROM candidates WHERE email='$email'";
-        $redirect = "candidateHomePage.html";
+        $sql = "SELECT * FROM candidates WHERE email = ?";
+        $redirect = "candidateHomePage.php";
     } else {
-        $sql = "SELECT * FROM companies WHERE email='$email'";
-        $redirect = "CompanyHomePage.html";
+        $sql = "SELECT * FROM companies WHERE email = ?";
+        $redirect = "companyHomePage.php";
     }
 
-    $result = mysqli_query($conn, $sql);
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$email]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if (mysqli_num_rows($result) === 1) {
-        $user = mysqli_fetch_assoc($result);
-
+    if ($user) {
         if (password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_type'] = $type;

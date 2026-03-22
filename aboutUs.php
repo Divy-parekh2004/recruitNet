@@ -1,7 +1,6 @@
 <?php
 require_once 'header.php';
 ?>
-
   <!-- Hero Section (no initial animation) -->
   <section class="about-hero">
     <div class="hero-particles">
@@ -24,39 +23,38 @@ require_once 'header.php';
             <p class="hero-description">RecruitNet isn't just a job platform — it's where careers take flight and companies find their heartbeat. With over 86k success stories, we've redefined what it means to connect talent with opportunity.</p>
           </div>
         </div>
- <div class="col-lg-6">
-  <div class="hero-image-wrapper">
-    <!-- Bubble container (same as before) -->
-    <div class="bubble-container">
-      <div class="bubble" style="left: 15%; top: 20%; width: 30px; height: 30px; background: rgba(255,122,61,0.2); animation-delay: 0s;"></div>
-      <div class="bubble" style="left: 40%; top: 60%; width: 45px; height: 45px; background: rgba(10,59,91,0.2); animation-delay: 0.8s;"></div>
-      <div class="bubble" style="left: 70%; top: 30%; width: 25px; height: 25px; background: rgba(255,180,70,0.2); animation-delay: 1.5s;"></div>
-      <div class="bubble" style="left: 80%; top: 70%; width: 50px; height: 50px; background: rgba(74,144,226,0.2); animation-delay: 2.2s;"></div>
-      <div class="bubble" style="left: 25%; top: 80%; width: 35px; height: 35px; background: rgba(255,122,61,0.15); animation-delay: 0.3s;"></div>
-      <div class="bubble" style="left: 55%; top: 15%; width: 40px; height: 40px; background: rgba(10,59,91,0.15); animation-delay: 1.1s;"></div>
-      <div class="bubble" style="left: 10%; top: 45%; width: 20px; height: 20px; background: rgba(255,180,70,0.2); animation-delay: 0.5s;"></div>
-      <div class="bubble" style="left: 90%; top: 40%; width: 55px; height: 55px; background: rgba(74,144,226,0.15); animation-delay: 1.9s;"></div>
-    </div>
+        <div class="col-lg-6">
+          <div class="hero-image-wrapper">
+            <!-- Bubble container (same as before) -->
+            <div class="bubble-container">
+              <div class="bubble" style="left: 15%; top: 20%; width: 30px; height: 30px; background: rgba(255,122,61,0.2); animation-delay: 0s;"></div>
+              <div class="bubble" style="left: 40%; top: 60%; width: 45px; height: 45px; background: rgba(10,59,91,0.2); animation-delay: 0.8s;"></div>
+              <div class="bubble" style="left: 70%; top: 30%; width: 25px; height: 25px; background: rgba(255,180,70,0.2); animation-delay: 1.5s;"></div>
+              <div class="bubble" style="left: 80%; top: 70%; width: 50px; height: 50px; background: rgba(74,144,226,0.2); animation-delay: 2.2s;"></div>
+              <div class="bubble" style="left: 25%; top: 80%; width: 35px; height: 35px; background: rgba(255,122,61,0.15); animation-delay: 0.3s;"></div>
+              <div class="bubble" style="left: 55%; top: 15%; width: 40px; height: 40px; background: rgba(10,59,91,0.15); animation-delay: 1.1s;"></div>
+              <div class="bubble" style="left: 10%; top: 45%; width: 20px; height: 20px; background: rgba(255,180,70,0.2); animation-delay: 0.5s;"></div>
+              <div class="bubble" style="left: 90%; top: 40%; width: 55px; height: 55px; background: rgba(74,144,226,0.15); animation-delay: 1.9s;"></div>
+            </div>
 
-    <!-- Hero image with fully transparent background -->
-    <div class="hero-image">
-      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'%3E%3Ccircle cx='300' cy='300' r='200' fill='%23FF7A3D' opacity='0.15'/%3E%3Ctext x='200' y='320' fill='%230A3B5B' font-size='48' font-weight='900' font-family='Poppins'%3ETeam%3C/text%3E%3Ctext x='200' y='400' fill='%23FF7A3D' font-size='60' font-weight='900' font-family='Poppins'%3ESpirit%3C/text%3E%3C/svg%3E"
-           alt="Team Spirit">
-      <!-- Removed overlay to keep background transparent -->
-    </div>
+            <!-- Hero image with fully transparent background -->
+            <div class="hero-image">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'%3E%3Ccircle cx='300' cy='300' r='200' fill='%23FF7A3D' opacity='0.15'/%3E%3Ctext x='200' y='320' fill='%230A3B5B' font-size='48' font-weight='900' font-family='Poppins'%3ETeam%3C/text%3E%3Ctext x='200' y='400' fill='%23FF7A3D' font-size='60' font-weight='900' font-family='Poppins'%3ESpirit%3C/text%3E%3C/svg%3E"
+                  alt="Team Spirit">
+              <!-- Removed overlay to keep background transparent -->
+            </div>
 
-    <!-- Floating cards (unchanged) -->
-    <div class="floating-card floating-card-1">
-      <i class="fas fa-trophy"></i>
-      <div><strong>Best Workplace</strong><small>2024 Award</small></div>
-    </div>
-    <div class="floating-card floating-card-2">
-      <i class="fas fa-users"></i>
-      <div><strong>86k+ Happy</strong><small>Clients</small></div>
-    </div>
-  </div>
-</div>
-</div>
+            <!-- Floating cards (unchanged) -->
+            <div class="floating-card floating-card-1">
+              <i class="fas fa-trophy"></i>
+              <div><strong>Best Workplace</strong><small>2024 Award</small></div>
+            </div>
+            <div class="floating-card floating-card-2">
+              <i class="fas fa-users"></i>
+              <div><strong>86k+ Happy</strong><small>Clients</small></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -220,7 +218,6 @@ require_once 'header.php';
       </div>
     </div>
   </section>
-
 <?php
-require_once 'footer.php';        // Fixed: was contactUs.php
+require_once 'footer.php';
 ?>

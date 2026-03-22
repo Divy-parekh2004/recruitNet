@@ -5,11 +5,11 @@
         <div class="col-lg-4 col-md-6">
           <div class="footer-logo">
              Recruit
- <span>Net</span>
+            <span>Net</span>
           </div>
           <p class="my-3 opacity-50">Trusted by 86k+ clients — where talent meets opportunity.</p>
           <p><i class="fas fa-phone-alt me-3" style="color:var(--accent-orange);"></i> +91 9876543210</p>
-          <p><i class="fas fa-envelope me-3" style="color:var(--accent-orange);"></i> Ayushiba@recruitnet.com</p>
+          <p><i class="fas fa-envelope me-3" style="color:var(--accent-orange);"></i> admin@recruitnet.com</p>
         </div>
         <div class="col-lg-2 col-md-6">
           <h5 class="text-white">Services</h5>
@@ -49,7 +49,7 @@
         </div>
       </div>
       <hr class="mt-4">
-      <div class="text-center pt-2 small opacity-50">© 2026 RecruitNet — Ayushiba Zala</div>
+      <div class="text-center pt-2 small opacity-50">© 2026 RecruitNet</div>
     </div>
   </footer>
 
@@ -58,8 +58,9 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <!-- Include only the JS for the current page (each page will load its own) -->
   <!-- To avoid duplication, you can conditionally include based on page, but for simplicity we include all – each will init AOS again but it's harmless. -->
-  <script src="index.js"></script>
-  <script src="aboutUs.js"></script>
-  <script src="contactUs.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/aboutUs.js"></script>
+  <script src="js/contactUs.js"></script>
+  <script src="js/candidateHomePage.js"></script>
 </body>
 </html>
