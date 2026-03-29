@@ -157,7 +157,8 @@ if (isset($_GET['status'])) {
     </div>
   </div>
 </section>
-
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="js/contactUs.js"></script>
 <?php
 require_once 'footer.php';
 ?>

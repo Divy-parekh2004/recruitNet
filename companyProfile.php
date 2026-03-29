@@ -18,8 +18,13 @@
 
     <!-- NAVBAR -->
     <nav class="navbar fixed-top">
-        <div class="container">
+        <div class="container d-flex justify-content-between align-items-center">
             <a class="navbar-brand" href="#">Recruit<span>Net</span></a>
+
+            <a href="companyHomePage.php" class="btn btn-sign">
+                <i class="fas fa-arrow-left me-1"></i> Back
+            </a>
+
         </div>
     </nav>
 

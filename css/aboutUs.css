@@ -161,7 +161,7 @@
     @keyframes progress { to { width: 100%; } }
 
     /* ===== NAVBAR (Joblet style, enhanced) ===== */
-    .navbar {
+    /*.navbar {
       background: rgba(255,255,255,0.95);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
@@ -245,7 +245,7 @@
       color: white;
       border-color: transparent;
     }
-    .btn-sign:hover::before { left: 0; }
+    .btn-sign:hover::before { left: 0; }*/
 
     /* ===== HERO SECTION (cinematic, no initial animation) ===== */
     .about-hero {
@@ -721,9 +721,9 @@
 
     /* ===== TESTIMONIAL SLIDER ===== */
     .testimonial-premium { padding: 120px 0; background: white; }
-    .testimonial-slider { max-width: 900px; margin: 0 auto; overflow: hidden; }
-    .testimonial-track { display: flex; transition: transform 0.5s ease; }
-    .testimonial-slide { flex: 0 0 100%; padding: 0 20px; }
+    .testimonial-slider { max-width: 900px; margin: 0 auto; overflow: hidden; position: relative; }
+    .testimonial-track { display: flex; transition: transform 0.5s ease; will-change: transform; }
+    .testimonial-slide { flex: 0 0 100%; min-width: 100%; padding: 0 20px; }
     .testimonial-card-premium {
       background: var(--gray-light);
       border-radius: 60px;
@@ -780,6 +780,8 @@
       justify-content: center;
       gap: 1rem;
       margin-top: 2rem;
+      position: relative;
+      z-index: 5;
     }
     .slider-dot {
       width: 12px;

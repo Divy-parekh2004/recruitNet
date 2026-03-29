@@ -55,12 +55,8 @@
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> -->
   <!-- Include only the JS for the current page (each page will load its own) -->
   <!-- To avoid duplication, you can conditionally include based on page, but for simplicity we include all – each will init AOS again but it's harmless. -->
-  <script src="js/index.js"></script>
-  <script src="js/aboutUs.js"></script>
-  <script src="js/contactUs.js"></script>
-  <script src="js/candidateHomePage.js"></script>
 </body>
 </html>

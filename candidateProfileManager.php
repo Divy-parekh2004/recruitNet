@@ -1,22 +1,5 @@
 <?php require_once 'header.php'; ?>
-    <!-- NAVBAR (JobX style) -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">Recruit<span>Net</span></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a class="nav-link" href="candidateHomePage.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="aboutUs.php">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Resume</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contactUs.php">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link btn-post" href="#">POST A JOB</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+
 
     <!-- MAIN LAYOUT: sidebar + content -->
     <div class="container" style="margin-top: 140px;">
@@ -29,10 +12,10 @@
                         <li class="active"><a href="#"><i class="fas fa-user-circle"></i> My Resume</a></li>
                         <li><a href="#"><i class="fas fa-file-alt"></i> Manage Applications</a></li>
                        <!--  <li><a href="#"><i class="fas fa-clock"></i> Job Alerts</a></li> -->
-                        <li><a href="#"><i class="fas fa-key"></i> Change Password</a></li>
+                        <li><a href="forgotPassword.html"><i class="fas fa-key"></i> Change Password</a></li>
                     </ul>
                     <div class="sign-out">
-                        <a href="#"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+                        <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
                     </div>
                 </div>
             </div>

@@ -1,3 +1,10 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+$role = $_SESSION['user_type'] ?? null; // candidate | company | null
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,17 +19,30 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="css/contactUs.css">
-   <link rel="stylesheet" href="css/aboutUs.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/contactUs.css">
+  <link rel="stylesheet" href="css/aboutUs.css">
   <link rel="stylesheet" href="css/index.css">
   <link rel="stylesheet" href="css/candidateProfileManager.css">
-   <!-- <link rel="stylesheet" href="css/candidateHomePage.css"> -->
+  <link rel="stylesheet" href="css/candidateHomePage.css">
+  <link rel="stylesheet" href="css/companyHomePage.css">
+  <link rel="stylesheet" href="css/companyDashboard.css">
+  <link rel="stylesheet" href="css/companyProfileView.css">
+
 </head>
 <body>
+  <?php
+    $homeLink = "index.php";
+
+    if ($role === "candidate") {
+        $homeLink = "candidateHomePage.php";
+    } elseif ($role === "company") {
+        $homeLink = "companyHomePage.php";
+    }
+  ?>
     <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="index.php">
+      <a class="navbar-brand" href="<?php echo $homeLink;?>">
         <!-- Small RN icon -->
         Recruit<span>Net</span>
       </a>
@@ -31,11 +51,36 @@
       </button>
       <div class="collapse navbar-collapse" id="navMain">
         <ul class="navbar-nav mx-auto">
-          <li class="nav-item"><a class="nav-link home-link" href="index.php">Home</a></li>
+          <li class="nav-item"><a class="nav-link home-link" href="<?php echo $homeLink;?>">Home</a></li>
+          <!-- Candidate Links -->
+          <?php if ($role === "candidate") { ?>
+              <li class="nav-item"><a class="nav-link" href="#">Jobs</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Companies</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Resources</a></li>
+          <?php } ?>
+          <?php if ($role === "company") { ?>
+              <li class="nav-item"><a class="nav-link" href="#">Post Job</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Talent</a></li>
+              <li class="nav-item"><a class="nav-link" href="companyDashboard.php">Dashboard</a></li>
+          <?php } ?>
+
           <li class="nav-item"><a class="nav-link about-link" href="aboutUs.php">About</a></li>
           <li class="nav-item"><a class="nav-link contact-link" href="contactUs.php">Contact</a></li>
         </ul>
-        <a href="register.html" class="btn btn-sign"><i class="far fa-user me-2"></i>Sign in</a>
+        <?php if ($role) { ?>
+            <a href="<?php if($role === "candidate") {
+              echo "candidateProfileManager.php";
+            } elseif($role === "company") {
+              echo "companyProfileView.php";
+            } ?>"
+            class="btn btn-sign">
+              <i class="far fa-user me-2"></i>Profile
+            </a>
+        <?php } else { ?>
+            <a href="login.html" class="btn btn-sign">
+                <i class="far fa-user me-2"></i>Sign in
+            </a>
+        <?php } ?>
       </div>
     </div>
   </nav>

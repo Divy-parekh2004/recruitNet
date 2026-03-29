@@ -69,4 +69,12 @@ CREATE TABLE companies (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-
+--contact_messages
+CREATE TABLE `recruitnet`.`contact_messages` (
+    `id` INT NOT NULL AUTO_INCREMENT ,
+    `full_name` VARCHAR(100) NOT NULL ,
+    `email` VARCHAR(100) NOT NULL ,
+    `subject` VARCHAR(100) NOT NULL ,
+    `message` VARCHAR(255) NOT NULL ,
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB;

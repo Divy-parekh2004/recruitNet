@@ -24,7 +24,7 @@ h5 {
 }
 
 /* ===== NAVBAR ===== */
-.navbar {
+/*.navbar {
     background: rgba(255, 255, 255, 0.97);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
     padding: 18px 0;
@@ -44,7 +44,7 @@ h5 {
     color: var(--gray-mid) !important;
     font-weight: 500;
     margin: 0 0.7rem;
-}
+}*/
 
 /* ===== HERO (Recruiter) ===== */
 .hero {
@@ -90,6 +90,58 @@ h5 {
 
 .btn-primary-lg:hover {
     background: var(--primary-blue);
+}
+
+/* ===== HERO RIGHT COLUMN: FLOATING LOGO + BALLOONS ===== */
+.hero-logo-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 350px;
+}
+/* Balloon circles */
+.balloon-circle {
+    position: absolute;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    opacity: 0.3;
+    animation: floatBalloon 8s ease-in-out infinite;
+    pointer-events: none;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
+}
+@keyframes floatBalloon {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(10px, -25px) rotate(5deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+/* Floating text logo (full name) */
+.floating-text-logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 4.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    text-align: center;
+    animation: floatLogo 5s ease-in-out infinite;
+    filter: drop-shadow(0 15px 25px rgba(10,59,91,0.2));
+    z-index: 5;
+    cursor: default;
+}
+.floating-text-logo .recruit-part {
+    color: var(--primary-blue);
+}
+.floating-text-logo .net-part {
+    color: var(--accent-orange);
+}
+@keyframes floatLogo {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+@media (max-width: 768px) {
+    .floating-text-logo { font-size: 3.2rem; }
+}
+@media (max-width: 480px) {
+    .floating-text-logo { font-size: 2.8rem; }
 }
 
 /* ===== FEATURES ===== */

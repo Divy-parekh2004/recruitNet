@@ -1,0 +1,141 @@
+.main-content {
+    margin-top: 30px;
+}
+
+.company-hero {
+    margin-top: 90px;
+}
+
+.company-hero-card {
+    background: white;
+    border-radius: 28px;
+    padding: 30px;
+    box-shadow: var(--shadow-job);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.company-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.company-logo {
+    width: 80px;
+    height: 80px;
+    background: var(--accent-light);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: var(--accent-orange);
+}
+
+.company-meta {
+    color: var(--gray-mid);
+    margin-top: 5px;
+}
+
+.company-meta span {
+    margin: 0 8px;
+}
+
+.company-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-follow {
+    border: 2px solid var(--primary-blue);
+    padding: 10px 22px;
+    border-radius: 30px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn-follow:hover {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.profile-card {
+    background: white;
+    padding: 28px;
+    border-radius: 24px;
+    box-shadow: var(--shadow-job);
+    margin-bottom: 22px;
+}
+
+.culture-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.culture-badges span {
+    background: var(--accent-light);
+    color: var(--primary-blue);
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-weight: 500;
+}
+
+.profile-list {
+    list-style: none;
+    padding: 0;
+}
+
+.profile-list li {
+    margin-bottom: 10px;
+    color: var(--gray-mid);
+}
+
+.profile-list i {
+    color: var(--accent-orange);
+    margin-right: 8px;
+}
+
+.profile-sidebar {
+    background: white;
+    padding: 25px;
+    border-radius: 24px;
+    box-shadow: var(--shadow-job);
+}
+
+.profile-sidebar h4 {
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.social-links {
+    display: flex;
+    gap: 10px;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    background: var(--accent-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-orange);
+}
+
+.social-links a:hover {
+    background: var(--primary-blue);
+    color: white;
+}

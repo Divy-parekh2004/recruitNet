@@ -218,6 +218,8 @@ require_once 'header.php';
       </div>
     </div>
   </section>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="js/aboutUs.js"></script>
 <?php
 require_once 'footer.php';
 ?>

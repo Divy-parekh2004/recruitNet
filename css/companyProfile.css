@@ -36,6 +36,21 @@
             color: var(--primary-blue) !important;
         }
 
+        .btn-sign {
+            border: 2px solid var(--accent-orange);
+            border-radius: 40px;
+            padding: 8px 28px;
+            font-weight: 600;
+            color: var(--accent-orange);
+            background: transparent;
+            transition: 0.3s;
+        }
+
+        .btn-sign:hover {
+            background: var(--accent-orange);
+            color: white;
+        }
+
         .navbar-brand span {
             color: var(--accent-orange);
         }
