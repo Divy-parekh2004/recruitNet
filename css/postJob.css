@@ -1,0 +1,63 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f4f7fb;
+}
+
+/* LEFT PANEL */
+.left-panel {
+    background: linear-gradient(135deg, #0A3B5B, #05273D);
+    color: white;
+}
+
+.left-panel h1 {
+    font-weight: 800;
+}
+
+.left-panel p {
+    opacity: 0.9;
+}
+
+.tips div {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.tips i {
+    color: #FF7A3D;
+    margin-right: 8px;
+}
+
+/* FORM CARD */
+.form-card {
+    width: 100%;
+    max-width: 750px;
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+/* FLOATING INPUT */
+.form-floating label {
+    font-size: 14px;
+}
+
+.form-control {
+    border-radius: 12px;
+    padding: 14px;
+}
+
+/* BUTTON */
+.btn-submit {
+    background: linear-gradient(135deg, #FF7A3D, #ff9b6a);
+    border: none;
+    padding: 16px;
+    border-radius: 50px;
+    color: white;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-submit:hover {
+    background: #0A3B5B;
+}

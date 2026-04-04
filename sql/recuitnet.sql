@@ -69,6 +69,7 @@ CREATE TABLE companies (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+<<<<<<< Updated upstream
 --contact_messages
 CREATE TABLE `recruitnet`.`contact_messages` (
     `id` INT NOT NULL AUTO_INCREMENT ,
@@ -78,3 +79,20 @@ CREATE TABLE `recruitnet`.`contact_messages` (
     `message` VARCHAR(255) NOT NULL ,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
+=======
+-- post a job table
+CREATE TABLE jobs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255),
+    company VARCHAR(255),
+    location VARCHAR(255),
+    job_type VARCHAR(100),
+    salary VARCHAR(100),
+    experience VARCHAR(100),
+    skills TEXT,
+    description TEXT,
+    apply_link VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+>>>>>>> Stashed changes
