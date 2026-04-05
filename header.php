@@ -1,9 +1,21 @@
 <?php
+require_once "connection.php";
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
 $role = $_SESSION['user_type'] ?? null; // candidate | company | null
+$userId = $_SESSION['user_id'] ?? null;
+$profileLink = "login.html";
+if($role  === 'candidate') {
+  $stmt = $conn->prepare("SELECT id FROM profiles WHERE candidate_id = ?");
+  $stmt->execute([ $userId]);
+  $profileLink = $stmt->rowCount() ? "candidateProfileManager.php" : "candidateProfile.php";
+} elseif ($role === 'company') {
+  $stmt = $conn->prepare("SELECT id FROM company_profiles WHERE company_id = ?");
+  $stmt->execute([ $userId]);
+  $profileLink = $stmt->rowCount() ? "companyProfileView.php" : "companyProfile.php";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +40,9 @@ $role = $_SESSION['user_type'] ?? null; // candidate | company | null
   <link rel="stylesheet" href="css/companyHomePage.css">
   <link rel="stylesheet" href="css/companyDashboard.css">
   <link rel="stylesheet" href="css/companyProfileView.css">
-
+  <link rel="stylesheet" href="css/postJob.css">
+  <link rel="stylesheet" href="css/editCompanyProfile.css">
+  <link rel="stylesheet" href="css/editCandidateProfile.css">
 </head>
 <body>
   <?php
@@ -54,12 +68,12 @@ $role = $_SESSION['user_type'] ?? null; // candidate | company | null
           <li class="nav-item"><a class="nav-link home-link" href="<?php echo $homeLink;?>">Home</a></li>
           <!-- Candidate Links -->
           <?php if ($role === "candidate") { ?>
-              <li class="nav-item"><a class="nav-link" href="#">Jobs</a></li>
+              <li class="nav-item"><a class="nav-link" href="exploreJob.php">Jobs</a></li>
               <li class="nav-item"><a class="nav-link" href="#">Companies</a></li>
               <li class="nav-item"><a class="nav-link" href="#">Resources</a></li>
           <?php } ?>
           <?php if ($role === "company") { ?>
-              <li class="nav-item"><a class="nav-link" href="#">Post Job</a></li>
+              <li class="nav-item"><a class="nav-link" href="postJob.php">Post Job</a></li>
               <li class="nav-item"><a class="nav-link" href="#">Talent</a></li>
               <li class="nav-item"><a class="nav-link" href="companyDashboard.php">Dashboard</a></li>
           <?php } ?>
@@ -67,20 +81,10 @@ $role = $_SESSION['user_type'] ?? null; // candidate | company | null
           <li class="nav-item"><a class="nav-link about-link" href="aboutUs.php">About</a></li>
           <li class="nav-item"><a class="nav-link contact-link" href="contactUs.php">Contact</a></li>
         </ul>
-        <?php if ($role) { ?>
-            <a href="<?php if($role === "candidate") {
-              echo "candidateProfileManager.php";
-            } elseif($role === "company") {
-              echo "companyProfileView.php";
-            } ?>"
-            class="btn btn-sign">
-              <i class="far fa-user me-2"></i>Profile
-            </a>
-        <?php } else { ?>
-            <a href="login.html" class="btn btn-sign">
-                <i class="far fa-user me-2"></i>Sign in
-            </a>
-        <?php } ?>
+        <a href="<?= $profileLink ?>" class="btn btn-sign">
+          <i class="far fa-user me-2"></i>
+          <?= $role ? "Profile" : "Sign in" ?>
+        </a>
       </div>
     </div>
   </nav>

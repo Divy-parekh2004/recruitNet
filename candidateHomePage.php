@@ -1,5 +1,11 @@
 <?php
 require_once "header.php";
+require "connection.php";
+$sql = "SELECT * FROM jobs ORDER BY created_at DESC LIMIT 4";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+
+$jobs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
     <!-- ========== HERO (exact Joblet match) ========== -->
     <!-- HOME PAGE -->
@@ -150,81 +156,35 @@ require_once "header.php";
 
             <div class="row g-4">
                 <!-- Job Card 1 -->
+                <?php if(count($jobs) > 0){ ?>
+
+                <?php foreach($jobs as $row){ ?>
                 <div class="col-lg-6" data-aos="fade-up">
                     <div class="job-card">
-                        <h3 class="job-title">Group Marketing Manager</h3>
+                        <h3 class="job-title"><?php echo htmlspecialchars($row['title']); ?></h3>
                         <div class="job-meta">
-                            <span><i class="fas fa-user"></i> John Doe</span>
-                            <span><i class="far fa-calendar-alt"></i> Deadline 21st May, 2024</span>
-                            <span><i class="fas fa-map-marker-alt"></i> London</span>
+                            <span><i class="fas fa-user"></i> <?php echo htmlspecialchars($row['company']); ?></span>
+                            <span><i class="fas fa-map-marker-alt"></i> <?php echo htmlspecialchars($row['location']); ?></span>
+                            <span><i class="far fa-calendar-alt"></i> <?php echo date("d M Y", strtotime($row['created_at'])); ?></span>
                         </div>
                         <div class="job-tags">
-                            <span class="job-tag">Full Time</span>
-                            <span class="job-tag">Part Time</span>
-                            <span class="job-tag">Remote</span>
+                            <span class="job-tag"><?php echo htmlspecialchars($row['job_type']); ?></span>
+                            <span class="job-tag"><?php echo htmlspecialchars($row['experience']); ?> Years</span>
+                            <!-- <span class="job-tag">Remote</span> -->
                         </div>
-                        <div class="job-salary">$10000 - $12000<span style="font-size:1rem; color:var(--gray-mid);">/month</span></div>
-                        <a href="#" class="btn-read-more">Read More <i class="fas fa-arrow-right ms-2"></i></a>
+                        <div class="job-salary">₹<?php echo htmlspecialchars($row['salary']); ?><span style="font-size:1rem; color:var(--gray-mid);">/month</span></div>
+                        <p><strong>Skills:</strong> <?php echo htmlspecialchars($row['skills']); ?></p>
+                        <a href="jobDetails.php?id=<?php echo $row['id']; ?>" class="btn-read-more">Read More <i class="fas fa-arrow-right ms-2"></i></a>
                     </div>
                 </div>
-                <!-- Job Card 2 -->
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="50">
-                    <div class="job-card">
-                        <h3 class="job-title">Sr. Backend Go Developer</h3>
-                        <div class="job-meta">
-                            <span><i class="fas fa-user"></i> John Doe</span>
-                            <span><i class="far fa-calendar-alt"></i> Deadline 31st May, 2024</span>
-                            <span><i class="fas fa-map-marker-alt"></i> Dubai</span>
-                        </div>
-                        <div class="job-tags">
-                            <span class="job-tag">Full Time</span>
-                            <span class="job-tag">Part Time</span>
-                            <span class="job-tag">Remote</span>
-                        </div>
-                        <div class="job-salary">$10000 - $20000<span style="font-size:1rem; color:var(--gray-mid);">/week</span></div>
-                        <a href="#" class="btn-read-more">Read More <i class="fas fa-arrow-right ms-2"></i></a>
+                <?php } ?>
+                <?php } else { ?>
+                    <div class="col-12">
+                        <p class="text-center">No jobs found.</p>
                     </div>
-                </div>
-                <!-- Job Card 3 -->
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="job-card">
-                        <h3 class="job-title">WordPress Developer</h3>
-                        <div class="job-meta">
-                            <span><i class="fas fa-user"></i> John Doe</span>
-                            <span><i class="far fa-calendar-alt"></i> Deadline 20th July, 2025</span>
-                            <span><i class="fas fa-map-marker-alt"></i> London</span>
-                        </div>
-                        <div class="job-tags">
-                            <span class="job-tag">Full Time</span>
-                            <span class="job-tag">Part Time</span>
-                            <span class="job-tag">Remote</span>
-                        </div>
-                        <div class="job-salary">$10000 - $30000<span style="font-size:1rem; color:var(--gray-mid);">/year</span></div>
-                        <a href="#" class="btn-read-more">Read More <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-                <!-- Job Card 4 -->
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="150">
-                    <div class="job-card">
-                        <h3 class="job-title">Custom Product Manager</h3>
-                        <div class="job-meta">
-                            <span><i class="fas fa-user"></i> John Doe</span>
-                            <span><i class="far fa-calendar-alt"></i> Deadline 13th July, 2025</span>
-                            <span><i class="fas fa-map-marker-alt"></i> Los Angeles</span>
-                        </div>
-                        <div class="job-tags">
-                            <span class="job-tag">Full Time</span>
-                            <span class="job-tag">Part Time</span>
-                            <span class="job-tag">Remote</span>
-                        </div>
-                        <div class="job-salary">$8000 - $10000<span style="font-size:1rem; color:var(--gray-mid);">/daily</span></div>
-                        <a href="#" class="btn-read-more">Read More <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center mt-5" data-aos="fade-up">
-                <a href="#" class="btn btn-sign btn-lg">Explore All Job <i class="fas fa-arrow-right ms-2"></i></a>
+                <?php } ?>
+                <div class="text-center mt-5" data-aos="fade-up">
+                <a href="exploreJob.php" class="btn btn-sign btn-lg">Explore All Job <i class="fas fa-arrow-right ms-2"></i></a>
             </div>
         </div>
     </section>

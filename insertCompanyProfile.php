@@ -4,17 +4,17 @@ require "connection.php";
 
 $data = $_SESSION['company_data'];
 $logo = $_SESSION['logo'];
-
+$companyId = $_SESSION['user_id'];
 $logoName = time() . "_" . $logo['name'];
-move_uploaded_file($logo['tmp_name'], "companyLogo/" . $logoName);
+// move_uploaded_file($logo['tmp_name'], "uploads/company_logo/" . $logoName);
 
 $sql = "INSERT INTO company_profiles (
-    company_name, industry, company_size, founded_year, company_type,
+    company_id, company_name, industry, company_size, founded_year, company_type,
     about_company, headquarters, office_type, company_email, phone,
     website, linkedin, portfolio, work_environment, benefits,
     logo, gst_number, pan_number
 ) VALUES (
-    :company_name, :industry, :company_size, :founded_year, :company_type,
+    :company_id, :company_name, :industry, :company_size, :founded_year, :company_type,
     :about_company, :headquarters, :office_type, :company_email, :phone,
     :website, :linkedin, :portfolio, :work_environment, :benefits,
     :logo, :gst_number, :pan_number
@@ -22,6 +22,7 @@ $sql = "INSERT INTO company_profiles (
 
 $stmt = $conn->prepare($sql);
 $stmt->execute([
+    ':company_id'=>$companyId,
     ':company_name' => $data['company_name'],
     ':industry' => $data['industry'],
     ':company_size' => $data['company_size'],
@@ -41,8 +42,6 @@ $stmt->execute([
     ':gst_number' => $data['gst_number'],
     ':pan_number' => $data['pan_number']
 ]);
-
-session_destroy();
 
 echo "<script>alert('Company profile created successfully');window.location='companyHomePage.php';</script>";
 ?>

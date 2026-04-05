@@ -78,3 +78,60 @@ CREATE TABLE `recruitnet`.`contact_messages` (
     `message` VARCHAR(255) NOT NULL ,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
+
+--Adding foreign key to profiles table to link it with candidates table
+ALTER TABLE profiles
+ADD COLUMN candidate_id INT NOT NULL UNIQUE AFTER id,
+ADD CONSTRAINT fk_profiles_candidate
+FOREIGN KEY (candidate_id) REFERENCES candidates(id)
+ON DELETE CASCADE;
+
+--Adding foreign key to company_profiles table to link it with companies table
+ALTER TABLE company_profiles
+ADD COLUMN company_id INT NOT NULL UNIQUE AFTER id,
+ADD CONSTRAINT fk_profiles_company
+FOREIGN KEY (company_id) REFERENCES companies(id)
+ON DELETE CASCADE;
+
+--Adding profile_pic column to profiles table
+ALTER TABLE profiles
+ADD profile_pic VARCHAR(255) AFTER portfolio;
+
+--Addiing experience dates and description to profiles table
+ALTER TABLE profiles
+ADD COLUMN exp_from VARCHAR(20) NOT NULL AFTER company;
+
+ALTER TABLE profiles
+ADD COLUMN exp_to VARCHAR(20) NOT NULL AFTER exp_from;
+
+ALTER TABLE profiles
+ADD COLUMN experience_desc TEXT NOT NULL AFTER exp_to;
+
+--adding education detes to profiles table
+ALTER TABLE profiles
+ADD COLUMN edu_from VARCHAR(20) NOT NULL AFTER institute;
+
+ALTER TABLE profiles
+ADD COLUMN edu_to VARCHAR(20) NOT NULL AFTER edu_from;
+
+-- post a job table
+CREATE TABLE jobs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255),
+    company VARCHAR(255),
+    location VARCHAR(255),
+    job_type VARCHAR(100),
+    salary VARCHAR(100),
+    experience VARCHAR(100),
+    skills TEXT,
+    description TEXT,
+    apply_link VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+--adding foreign key to jobs table to link it with companies table
+ALTER TABLE jobs
+ADD COLUMN company_id INT NOT NULL UNIQUE AFTER id,
+ADD CONSTRAINT fk_jobs_company
+FOREIGN KEY (company_id) REFERENCES companies(id)
+ON DELETE CASCADE;

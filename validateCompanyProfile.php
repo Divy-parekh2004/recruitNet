@@ -26,6 +26,10 @@ if (!in_array($ext, ['jpg','jpeg','png'])) {
     die("<script>alert('Logo must be JPG or PNG');history.back();</script>");
 }
 
+$logo = $_FILES['logo'];
+$logoName = time() . "_" . $logo['name'];
+move_uploaded_file($logo['tmp_name'], "uploads/company_logo/" . $logoName);
+
 $_SESSION['company_data'] = $_POST;
 $_SESSION['logo'] = $_FILES['logo'];
 

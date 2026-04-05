@@ -228,7 +228,7 @@
             margin-bottom: 2rem;
             padding: 1.8rem;
             border-radius: 24px;
-            background: #F9FBFE;
+            background:#F9FBFE;
             transition: var(--transition);
             border: 1px solid rgba(10,59,91,0.03);
         }
@@ -264,6 +264,15 @@
             color: #4a5a6a;
             margin-bottom: 1rem;
         }
+        .exp-text {
+            color: #4a5a6a;
+            line-height: 1.9;
+            font-size: 1.05rem;
+            background: #F9FBFE;
+            padding: 2rem;
+            border-radius: 24px;
+            border: 1px solid rgba(10,59,91,0.05);
+        }
         .project-badge {
             background: var(--accent-light);
             color: var(--primary-blue);
@@ -293,12 +302,13 @@
         .edu-degree {
             font-weight: 700;
             color: var(--primary-blue);
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             margin-bottom: 0.2rem;
         }
         .edu-school {
             color: var(--accent-orange);
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 1.1rem;
         }
         .edu-date {
             color: var(--gray-mid);
@@ -312,7 +322,7 @@
             color: var(--accent-orange);
         }
 
-        /* SKILLS */
+        /* SKILLS 
         .skill-tag {
             background: var(--accent-light);
             color: var(--primary-blue);
@@ -331,6 +341,30 @@
             color: white;
             transform: translateY(-3px);
             box-shadow: 0 8px 14px rgba(255,122,61,0.3);
+        }*/
+        .skills-container{
+        display:flex;
+        flex-wrap:wrap;
+        gap:12px;
+        }
+
+        .skill-tag {
+        background: var(--accent-light);
+        color: var(--primary-blue);
+        padding: 10px 22px;
+        border-radius: 60px;
+        font-weight: 500;
+        display: inline-block;
+        border: 1px solid rgba(255,122,61,0.2);
+        transition: var(--transition);
+        font-size: 0.95rem;
+        }
+
+        .skill-tag:hover {
+        background: var(--accent-orange);
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 14px rgba(255,122,61,0.3);
         }
 
         /* INFO ROW */
@@ -349,6 +383,18 @@
         .info-item strong {
             color: var(--primary-blue);
             min-width: 100px;
+        }
+        /* Target links inside the info items */
+        .info-item a {
+            color: #4a5a6a; /* Matches your --gray-mid or body text color */
+            text-decoration: none; /* Removes the underline */
+            transition: var(--transition);
+        }
+
+        /* Optional: Add a hover effect so users know it's still clickable */
+        .info-item a:hover {
+            color: var(--accent-orange);
+            text-decoration: underline;
         }
 
         /* FOOTER */
