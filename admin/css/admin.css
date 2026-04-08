@@ -1,0 +1,152 @@
+/* ===== ADMIN LAYOUT ===== */
+
+.admin-wrapper {
+  display: flex;
+  min-height: 100vh;
+  background: var(--gray-light);
+}
+
+/* Sidebar */
+.admin-logo {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 30px;
+  color:white;
+}
+
+.admin-logo span {
+  color: var(--accent-orange);
+}
+
+.admin-sidebar {
+  width: 260px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: var(--primary-blue);
+  padding: 25px 15px;
+}
+
+.admin-menu {
+  margin-top: 20px;
+}
+
+.admin-menu a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  border-radius: 12px;
+  color: white;
+  text-decoration: none;
+  margin-bottom: 8px;
+  transition: 0.2s;
+  width: 100%;
+}
+
+.admin-menu a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.admin-menu a.active {
+  background: var(--accent-orange);
+  color: white;
+}
+
+/* Main Content */
+.admin-content {
+  margin-left: 260px;
+  padding: 30px;
+  flex: 1;
+}
+
+/* Topbar */
+.admin-topbar {
+  background: white;
+  padding: 15px 25px;
+  border-radius: 18px;
+  box-shadow: var(--shadow-job);
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Dashboard cards */
+.admin-card {
+  background: white;
+  /* color:var(--accent-orange); */
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-job);
+  transition: 0.2s;
+}
+
+.admin-card h3,
+.admin-card h5 {
+  color: var(--accent-orange);
+}
+
+.admin-header,
+.admin-card p {
+  color: var(--primary-blue);
+}
+
+.admin-cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-top:20px;
+}
+
+.admin-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.admin-stat {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent-orange);
+}
+
+/* Table */
+.admin-table {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: var(--shadow-job);
+}
+
+.admin-table table {
+  width: 100%;
+}
+
+.admin-table th {
+  color: var(--primary-blue);
+}
+
+.admin-main{
+margin-left:260px;
+padding:20px;
+}
+
+canvas{
+width:100% !important;
+height:300px !important;
+}
+
+.admin-chart-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
+gap:20px;
+margin-top:20px;
+}
+
+.admin-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}

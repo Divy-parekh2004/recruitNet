@@ -140,3 +140,8 @@
             padding: 40px 0;
             margin-top: 80px;
         }
+
+        input[readonly] {
+            background-color: #f5f7fa;
+            cursor: not-allowed;
+        }

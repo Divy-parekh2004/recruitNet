@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($message)) $errors[] = "message";
 
     if (empty($errors)) {
-        $stmt = $conn->prepare("INSERT INTO contactMessages (full_name, email, subject, message) VALUES (?, ?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO contact_messages (full_name, email, subject, message) VALUES (?, ?, ?, ?)");
 
         if ($stmt->execute([$name, $email, $subject, $message])) {
             header("Location: contactUs.php?status=success");

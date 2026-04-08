@@ -13,9 +13,9 @@ require_once "header.php";
                         RecruitNet helps companies connect with verified professionals,
                         reduce hiring time, and build high-performing teams effortlessly.
                     </p>
-                    <button class="btn-primary-lg">
+                    <a href="postJob.php" class="btn-primary-lg">
                         Post a Job →
-                    </button>
+                    </a>
                 </div>
                 <div class="col-lg-5 text-center mt-5 mt-lg-0">
                     <div class="hero-logo-container">
@@ -134,7 +134,7 @@ require_once "header.php";
             <div class="cta text-center">
                 <h2 class="fw-bold">Ready to Build Your Team?</h2>
                 <p class="fs-5 text-muted mt-2">Start hiring top talent today</p>
-                <button class="btn-primary-lg mt-3">Post Your First Job</button>
+                <a href="postJob.php" class="btn-primary-lg mt-3">Post Your First Job</a>
             </div>
         </div>
     </section>

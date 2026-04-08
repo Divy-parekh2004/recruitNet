@@ -191,11 +191,11 @@ h5 {
 
 /* ===== TALENT CATEGORIES ===== */
 .category {
-    background: var(--gray-light);
+    background: var(--accent-light);
     padding: 14px 30px;
     border-radius: 40px;
     font-weight: 500;
-    color: var(--primary-blue);
+    color: var(--primary-dark);
     transition: 0.2s;
 }
 

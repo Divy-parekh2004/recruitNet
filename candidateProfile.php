@@ -1,3 +1,11 @@
+<?php
+require_once 'connection.php';
+session_start();
+$candidateId = $_SESSION['user_id'];
+$stmt  = $conn->prepare("SELECT * FROM candidates WHERE id = ?");
+$stmt->execute([$candidateId]);
+$candidateData = $stmt->fetch(PDO::FETCH_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,35 +53,34 @@
 
             <!-- ✅ FORM START -->
             <form action="validateCandidateProfile.php" method="POST" enctype="multipart/form-data">
-
                 <div class="form-card">
-            
+
                     <!-- BASIC INFO -->
                     <h3 class="section-title">Basic Information</h3>
                     <div class="row g-4">
                         <div class="col-md-6">
                             <label>Full Name</label>
-                            <input type="text" name="full_name" class="form-control" placeholder="John Doe" required>
+                            <input type="text" name="full_name" class="form-control" value="<?php echo htmlspecialchars($candidateData['name']); ?>" readonly>
                         </div>
                         <div class="col-md-6">
                             <label>Email</label>
-                            <input type="email" name="email" class="form-control" placeholder="john@email.com" required>
+                            <input type="email" name="email" class="form-control" value="<?php echo htmlspecialchars($candidateData['email']); ?>" readonly>
                         </div>
                         <div class="col-md-6">
                             <label>Phone Number</label>
-                            <input type="tel" name="phone" class="form-control" placeholder="+91 98765 43210" required>
+                            <input type="tel" name="phone" class="form-control" value="<?php echo htmlspecialchars($candidateData['phone']); ?>" readonly>
                         </div>
                         <div class="col-md-6">
                             <label>Current Location</label>
                             <input type="text" name="location" class="form-control" placeholder="Ahmedabad, India" required>
                         </div>
                     </div>
-            
+
                     <!-- PROFESSIONAL SUMMARY -->
                     <h3 class="section-title mt-5">Professional Summary</h3>
                     <textarea name="summary" class="form-control" rows="4"
                         placeholder="Brief summary highlighting your experience, skills, and career goals..." required></textarea>
-            
+
                     <!-- EXPERIENCE -->
                     <h3 class="section-title mt-5">Work Experience</h3>
                     <div class="row g-4">
@@ -85,6 +92,17 @@
                             <label>Company Name</label>
                             <input type="text" name="company" class="form-control" placeholder="ABC Technologies" required>
                         </div>
+
+                        <div class="col-md-6">
+                            <label>From</label>
+                            <input type="month" name="exp_from" class="form-control" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label>To</label>
+                            <input type="month" name="exp_to" class="form-control">
+                        </div>
+
                         <div class="col-md-4">
                             <label>Years of Experience</label>
                             <select name="experience" class="form-select" required>
@@ -116,13 +134,28 @@
                                 <option>60 Days</option>
                             </select>
                         </div>
+                        <div class="col-12">
+                            <label>Experience Description</label>
+                            <textarea
+                                name="experience_desc"
+                                class="form-control"
+                                rows="4"
+                                placeholder="Describe your responsibilities, achievements, technologies used..."
+                                required>
+                            </textarea>
+                        </div>
                     </div>
             
                     <!-- SKILLS -->
                     <h3 class="section-title mt-5">Skills</h3>
-                    <input type="text" name="skills" class="form-control"
-                        placeholder="e.g. HTML, CSS, JavaScript, React, PHP" required>
-            
+                    <!-- <input type="text" name="skills" class="form-control"
+                        placeholder="e.g. HTML, CSS, JavaScript, React, PHP" required> -->
+                    <div class="skills-wrapper">
+                        <div class="skills-input" id="skillsInput">
+                            <input type="text" id="skillField" placeholder="Type skill and press Enter or Space">
+                        </div>
+                        <input type="hidden" name="skills" id="skillsHidden">
+                    </div>
                     <!-- EDUCATION -->
                     <h3 class="section-title mt-5">Education</h3>
                     <div class="row g-4">
@@ -134,8 +167,20 @@
                             <label>University / Institute</label>
                             <input type="text" name="institute" class="form-control" required>
                         </div>
+                        <div class="col-md-6">
+                            <label>From</label>
+                            <input type="month" name="edu_from" class="form-control" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label>To</label>
+                            <input type="month" name="edu_to" class="form-control">
+                        </div>
+
                     </div>
-            
+
+
+
                     <!-- PREFERENCES -->
                     <h3 class="section-title mt-5">Job Preferences</h3>
                     <div class="row g-4">
@@ -149,10 +194,18 @@
                         </div>
                         <div class="col-md-4">
                             <label>Expected Salary</label>
-                            <input type="text" name="salary" class="form-control" placeholder="₹6–8 LPA" required>
+                            <select name="salary" class="form-select" required>
+                                <option value="">Select</option>
+                                <option value="Negotiable">Negotiable</option>
+                                <option value="₹1-3 LPA">₹1-3 LPA</option>
+                                <option value="₹3-6 LPA">₹3-6 LPA</option>
+                                <option value="₹6-10 LPA">₹6-10 LPA</option>
+                                <option value="₹10+ LPA">₹10+ LPA</option>
+                            </select>
+                            <!-- <input type="text" name="salary" class="form-control" placeholder="₹6–8 LPA" required> -->
                         </div>
                     </div>
-            
+
                     <!-- SOCIAL LINKS -->
                     <h3 class="section-title mt-5">Profile Links</h3>
                     <div class="row g-4">
@@ -165,28 +218,44 @@
                             <input type="url" name="portfolio" class="form-control" placeholder="https://github.com/username">
                         </div>
                     </div>
-            
-                    <!-- RESUME -->
-                    <h3 class="section-title mt-5">Resume Upload</h3>
-                    <div class="upload-box">
-                        <i class="fas fa-cloud-upload-alt fa-2x mb-2"></i>
-                        <p class="mb-1 fw-semibold">Upload Resume (PDF / DOC)</p>
-                        <input type="file" name="resume" class="form-control mt-2" required>
+
+                    <h3 class="section-title mt-5">Uploads</h3>
+
+                    <div class="row g-4">
+
+                        <!-- PROFILE PIC -->
+                        <div class="col-md-6">
+                            <div class="upload-box">
+                                <i class="fas fa-user-circle fa-2x mb-2"></i>
+                                <p class="mb-1 fw-semibold">Upload Profile Picture</p>
+                                <input type="file" name="profile_pic" class="form-control mt-2" accept="image/*" required>
+                            </div>
+                        </div>
+
+                        <!-- RESUME -->
+                        <div class="col-md-6">
+                            <div class="upload-box">
+                                <i class="fas fa-cloud-upload-alt fa-2x mb-2"></i>
+                                <p class="mb-1 fw-semibold">Upload Resume (PDF / DOC)</p>
+                                <input type="file" name="resume" class="form-control mt-2" required>
+                            </div>
+                        </div>
+
                     </div>
-            
+
                     <!-- SAVE -->
                     <div class="text-center mt-5">
                         <button type="submit" class="btn-save">Save & Continue</button>
                     </div>
-            
+
                 </div>
-            
+
             </form>
             <!-- ✅ FORM END -->
 
         </div>
     </section>
-
+    <script src="js/candidateProfile.js"></script>
     <!-- FOOTER -->
     <footer class="footer text-center">
         <div class="container">

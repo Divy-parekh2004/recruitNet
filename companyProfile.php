@@ -1,3 +1,11 @@
+<?php
+require_once 'connection.php';
+session_start();
+$companyId = $_SESSION['user_id'];
+$stmt  = $conn->prepare("SELECT * FROM companies WHERE id = ?");
+$stmt->execute([$companyId]);
+$companyData = $stmt->fetch(PDO::FETCH_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +52,6 @@
         <div class="container">
 
             <form action="validateCompanyProfile.php" method="POST" enctype="multipart/form-data">
-
                 <div class="form-card">
 
                     <!-- BASIC COMPANY INFO -->
@@ -53,7 +60,7 @@
                         <div class="col-md-6">
                             <label>Company Name</label>
                             <input type="text" name="company_name" class="form-control"
-                                placeholder="ABC Technologies Pvt Ltd" required>
+                                value="<?php echo htmlspecialchars($companyData['company_name']); ?>" readonly>
                         </div>
                         <div class="col-md-6">
                             <label>Industry</label>
@@ -125,17 +132,17 @@
                         <div class="col-md-6">
                             <label>Company Email</label>
                             <input type="email" name="company_email" class="form-control"
-                                placeholder="hr@company.com" required>
+                            value="<?php echo htmlspecialchars($companyData['email']); ?>" readonly>
                         </div>
                         <div class="col-md-6">
                             <label>Phone Number</label>
                             <input type="tel" name="phone" class="form-control"
-                                placeholder="+91 98765 43210" required>
+                                value="<?php echo htmlspecialchars($companyData['phone']); ?>" readonly>
                         </div>
                         <div class="col-md-6">
                             <label>Website</label>
                             <input type="url" name="website" class="form-control"
-                                placeholder="https://www.company.com">
+                                placeholder="https://www.company.com" required>
                         </div>
                     </div>
 
