@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>RecruitNet | Signup</title>
@@ -10,39 +11,60 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/register.css">
 </head>
+
 <body>
 
-<div class="auth-card">
-    <h3>Create Account</h3>
+    <div class="auth-card">
+        <h3>Create Account</h3>
 
-    <!-- Role Switch -->
-    <div class="role-switch">
-        <button id="candidateBtn" class="active" onclick="setRole('candidate')">
-            <i class="fas fa-user me-2"></i>Candidate</button>
-        <button id="companyBtn" onclick="setRole('company')">
-            <i class="fas fa-building me-2"></i>Company</button>
+        <!-- Role Switch -->
+        <div class="role-switch">
+            <button id="candidateBtn" class="active" onclick="setRole('candidate')">
+                <i class="fas fa-user me-2"></i>Candidate</button>
+            <button id="companyBtn" onclick="setRole('company')">
+                <i class="fas fa-building me-2"></i>Company</button>
+        </div>
+
+        <!-- Signup Form -->
+        <form id="registerForm" action="register.php" method="POST">
+            <input type="hidden" name="type" id="userType" value="candidate">
+
+            <!-- Name -->
+            <input type="text" id="name" name="name" class="form-control mb-1" placeholder="Full Name / Company Name">
+            <small class="text-danger mb-2" id="nameError">
+                <i class="fas fa-exclamation-circle me-1"></i>
+                <span></span>
+            </small>
+
+            <!-- Email -->
+            <input type="email" id="email" name="email" class="form-control mb-1" placeholder="Email Address">
+            <small class="text-danger mb-2" id="emailError">
+                <i class="fas fa-exclamation-circle me-1"></i>
+                <span></span>
+            </small>
+
+            <!-- Phone -->
+            <input type="text" id="phone" name="phone" class="form-control mb-1" placeholder="Contact Number">
+            <small class="text-danger mb-2" id="phoneError">
+                <i class="fas fa-exclamation-circle me-1"></i>
+                <span></span>
+            </small>
+
+            <!-- Password -->
+            <input type="password" id="password" name="password" class="form-control mb-1" placeholder="Password">
+            <small class="text-danger mb-3" id="passwordError">
+                <i class="fas fa-exclamation-circle me-1"></i>
+                <span></span>
+            </small>
+
+            <button type="submit" class="btn-main w-100">Register</button>
+        </form>
+        <div class="auth-footer">
+            Already have an account? <a href="login.html">Login</a>
+        </div>
     </div>
-
-    <!-- Signup Form -->
-    <form action="register.php" method="POST">
-        <input type="hidden" name="type" id="userType" value="candidate">
-
-        <input type="text" name="name" class="form-control mb-3" placeholder="Full Name / Company Name" required>
-
-        <input type="email" name="email" class="form-control mb-3" placeholder="Email Address" required>
-
-        <input type="text" name="phone" class="form-control mb-3" placeholder="Contact Number">
-
-        <input type="password" name="password" class="form-control mb-4" placeholder="Password" required>
-
-        <button type="submit" class="btn-main w-100">Register</button>
-    </form>
-
-    <div class="auth-footer">
-        Already have an account? <a href="login.html">Login</a>
-    </div>
-</div>
-<script src="js/register.js"></script>
+    <script src="js/register.js"></script>
 
 </body>
+
 </html>

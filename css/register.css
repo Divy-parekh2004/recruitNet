@@ -13,14 +13,14 @@
             width: 100%;
             max-width: 420px;
             padding: 32px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
 
         .auth-card h3 {
             font-weight: 700;
             margin-bottom: 20px;
             color: #0A3B5B;
+            text-align: center;
         }
 
         .role-switch {
@@ -67,10 +67,24 @@
         .auth-footer {
             margin-top: 15px;
             font-size: 14px;
+            text-align: center;
         }
 
         .auth-footer a {
             color: #FF7A3D;
             text-decoration: none;
             font-weight: 600;
+        }
+
+        .input-error {
+            border: 2px solid red !important;
+        }
+
+        small {
+            display: none;
+            /* hide by default */
+        }
+
+        small i {
+            color: red;
         }

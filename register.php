@@ -1,38 +1,47 @@
 <?php
-include "connection.php";
-include "registerValidation.php";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+function validateRegister($data) {
+    $errors = [];
 
-    $type = $_POST['type'];
-    $name = trim($_POST['name']);
-    $email = trim($_POST['email']);
-    $phone = trim($_POST['phone']);
-    $password = $_POST['password'];
-
-    // validation
-    $errors = validateRegister($_POST);
-    if (!empty($errors)) {
-        echo implode("<br>", $errors);
-        exit;
+    // Name validation
+    if (empty(trim($data['name']))) {
+        $errors[] = "Name is required.";
+    } elseif (strlen($data['name']) < 3) {
+        $errors[] = "Name must be at least 3 characters.";
     }
 
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-    if ($type === "candidate") {
-        $sql = "INSERT INTO candidates (name, email, phone, password) VALUES (?, ?, ?, ?)";
-        $params = [$name, $email, $phone, $hashedPassword];
-    } else {
-        $sql = "INSERT INTO companies (company_name, email, phone, password) VALUES (?, ?, ?, ?)";
-        $params = [$name, $email, $phone, $hashedPassword];
+    // Email validation
+    if (empty(trim($data['email']))) {
+        $errors[] = "Email is required.";
+    } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "Invalid email format.";
     }
 
-    $stmt = $conn->prepare($sql);
-    if ($stmt->execute($params)) {
-        header("Location: login.html");
-        exit;
-    } else {
-        echo "Database error: " . $stmt->errorInfo()[2];
+    // Phone validation
+    if (empty(trim($data['phone']))) {
+        $errors[] = "Phone number is required.";
+    } elseif (!preg_match('/^[0-9]{10}$/', $data['phone'])) {
+        $errors[] = "Phone must be 10 digits.";
     }
+
+    // Password validation
+    if (empty($data['password'])) {
+        $errors[] = "Password is required.";
+    } elseif (strlen($data['password']) < 6) {
+        $errors[] = "Password must be at least 6 characters.";
+    } elseif (!preg_match('/[A-Z]/', $data['password'])) {
+        $errors[] = "Password must contain at least one uppercase letter.";
+    } elseif (!preg_match('/[0-9]/', $data['password'])) {
+        $errors[] = "Password must contain at least one number.";
+    }
+
+    // Type validation
+    if (empty($data['type'])) {
+        $errors[] = "User type is required.";
+    } elseif (!in_array($data['type'], ['candidate', 'company'])) {
+        $errors[] = "Invalid user type.";
+    }
+
+    return $errors;
 }
 ?>

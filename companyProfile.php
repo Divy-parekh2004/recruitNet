@@ -43,8 +43,7 @@
     <section class="py-5">
         <div class="container">
 
-            <form action="validateCompanyProfile.php" method="POST" enctype="multipart/form-data">
-
+            <form id="companyForm" action="validateCompanyProfile.php" method="POST" enctype="multipart/form-data" novalidate>
                 <div class="form-card">
 
                     <!-- BASIC COMPANY INFO -->
@@ -133,9 +132,8 @@
                                 placeholder="+91 98765 43210" required>
                         </div>
                         <div class="col-md-6">
-                            <label>Website</label>
-                            <input type="url" name="website" class="form-control"
-                                placeholder="https://www.company.com">
+                           <label>Website</label>
+<input type="text" name="website" class="form-control" placeholder="https://www.company.com">  
                         </div>
                     </div>
 
@@ -144,11 +142,11 @@
                     <div class="row g-4">
                         <div class="col-md-6">
                             <label>LinkedIn Page</label>
-                            <input type="url" name="linkedin" class="form-control">
+<input type="text" name="linkedin" class="form-control" placeholder="https://www.linkedin.com/company/yourcompany">
                         </div>
                         <div class="col-md-6">
                             <label>Company Portfolio / Product Page</label>
-                            <input type="url" name="portfolio" class="form-control">
+<input type="text" name="portfolio" class="form-control" placeholder="https://www.company.com/portfolio">
                         </div>
                     </div>
 
@@ -211,6 +209,6 @@
             © 2026 RecruitNet • Trusted hiring starts with transparency
         </div>
     </footer>
-
+    <script src="js/companyProfile.js"></script>
 </body>
 </html>
