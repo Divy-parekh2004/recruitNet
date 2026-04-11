@@ -24,16 +24,31 @@
     </div>
 
     <!-- Login Form -->
-    <form action="login.php" method="POST">
-        <input type="hidden" name="type" id="userType" value="candidate">
+    <form id="loginForm" action="login.php" method="POST">
+    <input type="hidden" name="type" id="userType" value="candidate">
 
-        <input type="email" name="email" class="form-control mb-3" placeholder="Email Address" required>
+    <!-- Email -->
+    <input type="email" id="email" name="email" class="form-control mb-1" placeholder="Email Address">
+    <small class="text-danger mb-2" id="emailError">
+        <i class="fas fa-exclamation-circle me-1"></i>
+        <span></span>
+    </small>
 
-        <input type="password" name="password" class="form-control mb-4" placeholder="Password" required>
+    <!-- Password -->
+    <input type="password" id="password" name="password" class="form-control mb-1" placeholder="Password">
+    <small class="text-danger mb-3" id="passwordError">
+        <i class="fas fa-exclamation-circle me-1"></i>
+        <span></span>
+    </small>
 
-        <button type="submit" class="btn-main w-100">Login</button>
-    </form>
+    <!-- Common error -->
+    <small class="text-danger mb-3" id="loginError">
+        <i class="fas fa-exclamation-triangle me-1"></i>
+        <span></span>
+    </small>
 
+    <button type="submit" class="btn-main w-100">Login</button>
+</form>
     <div class="auth-footer">
         Don’t have an account? <a href="register.html">Register</a>
     </div>

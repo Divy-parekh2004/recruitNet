@@ -6,11 +6,9 @@
     <title>RecruitNet • Create Candidate Profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Bootstrap + Icons + Fonts -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/candidateProfile.css">
 </head>
 
@@ -20,11 +18,9 @@
     <nav class="navbar fixed-top">
         <div class="container d-flex justify-content-between align-items-center">
             <a class="navbar-brand" href="#">Recruit<span>Net</span></a>
-
             <a href="candidateHomePage.php" class="btn btn-sign">
                 <i class="fas fa-arrow-left me-1"></i> Back
             </a>
-
         </div>
     </nav>
 
@@ -43,8 +39,7 @@
     <section class="py-5">
         <div class="container">
 
-            <!-- ✅ FORM START -->
-            <form action="validateCandidateProfile.php" method="POST" enctype="multipart/form-data">
+<form id="profileForm" action="validateCandidateProfile.php" method="POST" enctype="multipart/form-data" novalidate>
 
                 <div class="form-card">
             
@@ -71,8 +66,7 @@
             
                     <!-- PROFESSIONAL SUMMARY -->
                     <h3 class="section-title mt-5">Professional Summary</h3>
-                    <textarea name="summary" class="form-control" rows="4"
-                        placeholder="Brief summary highlighting your experience, skills, and career goals..." required></textarea>
+                    <textarea name="summary" class="form-control" rows="4" placeholder="Brief summary highlighting your experience, skills, and career goals..." required></textarea>
             
                     <!-- EXPERIENCE -->
                     <h3 class="section-title mt-5">Work Experience</h3>
@@ -120,8 +114,7 @@
             
                     <!-- SKILLS -->
                     <h3 class="section-title mt-5">Skills</h3>
-                    <input type="text" name="skills" class="form-control"
-                        placeholder="e.g. HTML, CSS, JavaScript, React, PHP" required>
+                    <input type="text" name="skills" class="form-control" placeholder="e.g. HTML, CSS, JavaScript, React, PHP" required>
             
                     <!-- EDUCATION -->
                     <h3 class="section-title mt-5">Education</h3>
@@ -182,7 +175,6 @@
                 </div>
             
             </form>
-            <!-- ✅ FORM END -->
 
         </div>
     </section>
@@ -194,5 +186,6 @@
         </div>
     </footer>
 
+<script src="js/candidateProfile.js"></script>
 </body>
 </html>
